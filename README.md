@@ -24,5 +24,10 @@ The **k-NN model** outperformed the linear SVM. Because credit data is highly co
 
 By capturing 61% of potential defaulters accurately, this model provides a solid baseline for risk mitigation, potentially saving millions in bad loans.
 
-## 🚀 Next Steps
-* Build an interactive Business Intelligence dashboard (Power BI) to visualize risk clusters and track key performance indicators (KPIs) for stakeholders.
+## 📦 Interactive Dashboard
+
+**[👉 Click here to interact with the Power BI Dashboard](https://app.powerbi.com/view?r=eyJrIjoiNzMyY2ZmYWItYWVjMy00ZDdmLWJiMjQtOTg4YjMxMDBiMjkwIiwidCI6ImRlNTM3NmEzLTdhOTEtNGM1NS1hOGQ5LTI0YjhkMTVlNWViMSJ9)**
+
+*(If you are viewing this on mobile or without Power BI access, check the static preview below)*
+
+![Supply Chain Dashboard](CreditRisk_analysis.jpg)

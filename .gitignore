@@ -1,0 +1,11 @@
+# Secrets
+Kaggle_token.env
+.env
+
+# Generated and downloaded data
+cache/
+credit_risk_dataset.csv
+
+# Jupyter and Python
+.ipynb_checkpoints/
+__pycache__/

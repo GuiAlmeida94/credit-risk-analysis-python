@@ -49,7 +49,7 @@ All numbers below come from the saved outputs of `v2/Credit_risk_analysis_v2.ipy
 - **Probabilities are calibrated.** The raw model overstated risk (mean predicted default probability 29.2% against 21.9% observed). Isotonic calibration reduced the Brier score from 0.064 to 0.052 without hurting ranking (ROC-AUC 0.949).
 - **Estimated value.** Under illustrative cost assumptions (60% loss given default, one year of forgone interest), using the model as a credit filter cuts the simulated loss from USD 13.97 million to USD 2.67 million, an **80.9% saving** versus approving every loan (95% CI 79.1% to 82.6%). A naive rule, "reject loan grades D to G", saves 37.3%.
 - **The model is not just the lender's own score.** Without `loan_grade` and `loan_int_rate` the ROC-AUC falls from 0.950 to 0.904, so part of the signal is the lender's earlier pricing, but a substantial independent signal remains. Removing `person_age` costs almost nothing (ROC-AUC 0.948).
-- **Risk bands separate clients well.** Observed default rate of **2.1%** (Low, 17,364 clients), **11.4%** (Medium, 7,302) and **76.1%** (High, 7,743), with the High band holding about 82% of the expected loss (expected loss = PD x LGD x EAD).
+- **Risk bands separate clients well.** On the **whole portfolio** (out-of-fold scores of all 32,409 clients) the observed default rate is **2.1%** (Low, 17,364 clients), **11.4%** (Medium, 7,302) and **76.1%** (High, 7,743), with the High band holding about 82% of the expected loss (expected loss = PD x LGD x EAD). On the **held-out test set**, the model fitted on the training set gives 2.8% / 11.4% / **68.1%** (5,767 / 1,286 / 2,670 clients), and the out-of-fold scores of the test clients give 2.1% / 11.3% / 75.7%. For new clients, expect the first set.
 - **Where the risk is.** Loans above 30% of income default 70.4% of the time, against 11.6% below 10%; a prior default on file raises the rate from 18.4% to 37.9%.
 
 ![Risk drivers](v2/credit_risk_features.png)
@@ -57,7 +57,8 @@ All numbers below come from the saved outputs of `v2/Credit_risk_analysis_v2.ipy
 
 ### Limitations
 - **The labels look rule-generated, so the headline figures are an upper bound.** All 2,339 renters whose loan is at least 31% of their income defaulted, with no exception: 7.2% of the clients and 33.0% of all defaults (the notebook, section 8b, shows the check). A decision tree with two levels already reaches a cross-validated ROC-AUC of about 0.80, and without that group the out-of-fold ROC-AUC falls from 0.951 to 0.926. The ROC-AUC of 0.95 and the 81% simulated saving should be read as a ceiling for this dataset, not as an expectation for real data.
-- The cost figures are illustrative and in US dollars; they are not in the data. The notebook includes a sensitivity analysis over them.
+- The cost figures are illustrative and in US dollars; they are not in the data. The notebook includes a sensitivity analysis over them (the simulated saving ranges from 75.5% to 84.3% across the scenarios).
+- 3,477 clients have a calibrated PD of exactly 1.0 (all of them defaulted) and 2,135 have exactly 0.0 (none defaulted). This is not a calibration bug: it follows from the near-deterministic labels described above (the renter group accounts for 2,213 of the 3,477), and no floor or cap was applied to the PDs.
 - The data is a snapshot (no time dimension) and only approved loans have outcomes.
 - Variables such as age may be restricted in real credit decisions (for example under GDPR Article 22 and anti-discrimination rules), so a compliance review would be needed before any real use.
 

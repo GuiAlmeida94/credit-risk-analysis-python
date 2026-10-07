@@ -60,4 +60,4 @@ Live dashboards:
 - The ROC-AUC of 0.95 and the 81% simulated saving are an upper bound for this dataset: its labels look rule-generated (all 2,339 renters with a loan of at least 31% of their income defaulted; see section 8b of the notebook).
 - Risk bands: Low (PD below 8.5%), Medium (8.5% to 17%), High (17% or more).
 - Expected Loss = PD x 60% loss given default x loan amount (illustrative assumption).
-- The dashboard scores the full portfolio, including the 70% of loans used for training, so rates by risk band are optimistic. Honest performance (ROC-AUC 0.950; recall 80.5% at the 0.5 cutoff and 86.1% at the recall-first cutoff) is measured on the 30% hold-out test set.
+- The dashboard scores the full portfolio with out-of-fold probabilities (High band: 76.1% observed default rate). On the held-out test set the model fitted on the training set gives 68.1% for the High band, so the portfolio rates should be read as optimistic for new clients. Honest performance (ROC-AUC 0.950; recall 80.5% at the 0.5 cutoff and 86.1% at the recall-first cutoff) is measured on the 30% hold-out test set.

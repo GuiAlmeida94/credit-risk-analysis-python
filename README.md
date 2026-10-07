@@ -56,6 +56,7 @@ All numbers below come from the saved outputs of `v2/Credit_risk_analysis_v2.ipy
 ![SHAP beeswarm](v2/credit_risk_shap_beeswarm.png)
 
 ### Limitations
+- **The labels look rule-generated, so the headline figures are an upper bound.** All 2,339 renters whose loan is at least 31% of their income defaulted, with no exception: 7.2% of the clients and 33.0% of all defaults (the notebook, section 8b, shows the check). A decision tree with two levels already reaches a cross-validated ROC-AUC of about 0.80, and without that group the out-of-fold ROC-AUC falls from 0.951 to 0.926. The ROC-AUC of 0.95 and the 81% simulated saving should be read as a ceiling for this dataset, not as an expectation for real data.
 - The cost figures are illustrative and in US dollars; they are not in the data. The notebook includes a sensitivity analysis over them.
 - The data is a snapshot (no time dimension) and only approved loans have outcomes.
 - Variables such as age may be restricted in real credit decisions (for example under GDPR Article 22 and anti-discrimination rules), so a compliance review would be needed before any real use.

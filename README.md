@@ -19,6 +19,19 @@ Dataset: [Credit Risk Dataset](https://www.kaggle.com/datasets/laotse/credit-ris
 
 The original version is kept unchanged. Its best model was **k-NN (k=5)**, which caught 61% of defaulters at an overall accuracy of 89%.
 
+## Version history (v1 vs v2)
+
+Both versions are kept so the progress is measurable (git tags `v1.0` and `v2.0`). Full comparison: [docs/V1_vs_V2.md](docs/V1_vs_V2.md).
+
+| | v1 | v2 |
+|---|---|---|
+| Defaulters caught (recall) | 61% | **86.1%** |
+| ROC-AUC | not measured | **0.950** |
+| Preprocessing | before the split | leakage-free pipelines |
+| Calibration and cost analysis | none | isotonic calibration, 81% lower simulated loss |
+| Power BI | 1 descriptive page | 3 pages driven by model scores ([live v2 dashboard](https://app.powerbi.com/view?r=eyJrIjoiOTU0ODY1MTctOTY5NC00OTJhLWI2ZGEtZTM2MzlhNDdjNTg2IiwidCI6ImRlNTM3NmEzLTdhOTEtNGM1NS1hOGQ5LTI0YjhkMTVlNWViMSJ9)) |
+
+The Power BI file for v2 is in `v2/powerbi/`.
 ## Results of v2
 All numbers below come from the saved outputs of `v2/Credit_risk_analysis_v2.ipynb`, on the 30% held-out test set unless noted.
 

@@ -1,0 +1,36 @@
+{
+  "name": "Credit Risk v2 - Portfolio Dark",
+  "dataColors": ["#46C7B8", "#E3A857", "#E5574F", "#8B96A8", "#5B8DEF", "#9B7EDE", "#7FD1AE", "#C9733A"],
+  "background": "#0A0E14",
+  "foreground": "#E8EDF3",
+  "tableAccent": "#E3A857",
+  "good": "#46C7B8",
+  "neutral": "#E3A857",
+  "bad": "#E5574F",
+  "maximum": "#E5574F",
+  "center": "#E3A857",
+  "minimum": "#46C7B8",
+  "textClasses": {
+    "label": {"fontSize": 11, "fontFace": "Segoe UI", "color": "#8B96A8"},
+    "callout": {"fontSize": 28, "fontFace": "Segoe UI Semibold", "color": "#E3A857"},
+    "title": {"fontSize": 14, "fontFace": "Segoe UI Semibold", "color": "#E8EDF3"},
+    "header": {"fontSize": 12, "fontFace": "Segoe UI Semibold", "color": "#E8EDF3"}
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [{"color": {"solid": {"color": "#131A24"}}, "transparency": 0}],
+        "border": [{"color": {"solid": {"color": "#232C3A"}}, "show": true, "radius": 8}],
+        "title": [{"fontColor": {"solid": {"color": "#E8EDF3"}}, "fontSize": 13}],
+        "categoryAxis": [{"labelColor": {"solid": {"color": "#8B96A8"}}}],
+        "valueAxis": [{"labelColor": {"solid": {"color": "#8B96A8"}}}],
+        "legend": [{"labelColor": {"solid": {"color": "#8B96A8"}}}]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [{"color": {"solid": {"color": "#0A0E14"}}, "transparency": 0}]
+      }
+    }
+  }
+}

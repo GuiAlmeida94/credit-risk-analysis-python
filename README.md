@@ -25,7 +25,8 @@ Both versions are kept so the progress is measurable (git tags `v1.0` and `v2.0`
 
 | | v1 | v2 |
 |---|---|---|
-| Defaulters caught (recall) | 61% | **86.1%** |
+| Defaulters caught (recall) at the default 0.5 cutoff | 61% | **80.5%** |
+| Defaulters caught (recall) at a recall-first cutoff (0.35) | not tuned | 86.1% (precision 66.8%) |
 | ROC-AUC | not measured | **0.950** |
 | Preprocessing | before the split | leakage-free pipelines |
 | Calibration and cost analysis | none | isotonic calibration, 81% lower simulated loss |
@@ -43,7 +44,7 @@ All numbers below come from the saved outputs of `v2/Credit_risk_analysis_v2.ipy
 | Random Forest (tuned) | 0.929 | 0.878 |
 | **XGBoost (tuned)** | **0.950** | **0.907** |
 
-- **The tuned XGBoost catches 86.1% of defaulters** (95% bootstrap CI 84.7% to 87.6%) with 66.8% precision, at a decision threshold chosen on out-of-fold training predictions. At the default 0.5 cutoff, k-NN catches 61.1% of defaulters.
+- **The tuned XGBoost catches 80.5% of defaulters at the default 0.5 cutoff, against 61.1% for k-NN, with the same precision (83.1% vs 82.6%).** That is the gain of the model. Lowering the cutoff to the tuned 0.35 raises recall to **86.1%** (95% bootstrap CI 84.7% to 87.6%) but cuts precision to 66.8%: that is the gain of the cutoff, and it is a trade-off, not a free improvement. The threshold was chosen on out-of-fold training predictions.
 - **Interactions drive the gain.** Tree models beat the linear and distance-based ones because default risk depends on combinations of variables (for example loan grade together with loan-to-income).
 - **Probabilities are calibrated.** The raw model overstated risk (mean predicted default probability 29.2% against 21.9% observed). Isotonic calibration reduced the Brier score from 0.064 to 0.052 without hurting ranking (ROC-AUC 0.949).
 - **Estimated value.** Under illustrative cost assumptions (60% loss given default, one year of forgone interest), using the model as a credit filter cuts the simulated loss from USD 13.97 million to USD 2.67 million, an **80.9% saving** versus approving every loan (95% CI 79.1% to 82.6%). A naive rule, "reject loan grades D to G", saves 37.3%.
